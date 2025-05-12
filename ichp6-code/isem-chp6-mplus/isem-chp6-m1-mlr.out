@@ -1,0 +1,248 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+03/17/2025   5:35 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: psychological distress;
+  DATA: FILE = isem-nsduh-mplus-data.csv;
+  VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+    USEVAR = k6nrv k6rst k6dep k6hop k6eff k6wth;
+  ANALYSIS: ESTIMATOR = MLR;
+  MODEL:
+    PD BY k6nrv k6rst k6dep k6hop k6eff k6wth;
+  OUTPUT: STDYX;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+psychological distress;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3321
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   K6NRV       K6RST       K6DEP       K6HOP       K6EFF       K6WTH
+
+Continuous latent variables
+   PD
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  isem-nsduh-mplus-data.csv
+
+Input data format  FREE
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     K6NRV                 2.365       0.497       1.000   26.83%       1.000      2.000      2.000
+            3321.000       1.269      -0.500       5.000    4.70%       3.000      3.000
+     K6RST                 2.133       0.757       1.000   39.96%       1.000      2.000      2.000
+            3321.000       1.367      -0.371       5.000    4.46%       2.000      3.000
+     K6DEP                 1.753       1.331       1.000   56.79%       1.000      1.000      1.000
+            3321.000       1.087       1.000       5.000    2.59%       2.000      3.000
+     K6HOP                 1.771       1.321       1.000   56.37%       1.000      1.000      1.000
+            3321.000       1.129       0.938       5.000    2.89%       2.000      3.000
+     K6EFF                 2.198       0.769       1.000   40.59%       1.000      1.000      2.000
+            3321.000       1.602      -0.522       5.000    7.05%       2.000      3.000
+     K6WTH                 1.880       1.187       1.000   52.39%       1.000      1.000      1.000
+            3321.000       1.299       0.481       5.000    4.22%       2.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       18
+
+Loglikelihood
+
+          H0 Value                      -24360.842
+          H0 Scaling Correction Factor      1.4142
+            for MLR
+          H1 Value                      -24151.484
+          H1 Scaling Correction Factor      1.5368
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   48757.683
+          Bayesian (BIC)                 48867.627
+          Sample-Size Adjusted BIC       48810.433
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            234.989*
+          Degrees of Freedom                     9
+          P-Value                           0.0000
+          Scaling Correction Factor         1.7819
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.087
+          90 Percent C.I.                    0.078  0.097
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.967
+          TLI                                0.945
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           6827.364
+          Degrees of Freedom                    15
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.030
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PD       BY
+    K6NRV              1.000      0.000    999.000    999.000
+    K6RST              1.046      0.023     45.738      0.000
+    K6DEP              1.128      0.029     38.812      0.000
+    K6HOP              1.140      0.027     42.104      0.000
+    K6EFF              1.205      0.029     41.809      0.000
+    K6WTH              1.239      0.031     40.191      0.000
+
+ Intercepts
+    K6NRV              2.365      0.020    120.976      0.000
+    K6RST              2.133      0.020    105.122      0.000
+    K6DEP              1.753      0.018     96.882      0.000
+    K6HOP              1.771      0.018     96.031      0.000
+    K6EFF              2.198      0.022    100.053      0.000
+    K6WTH              1.880      0.020     95.062      0.000
+
+ Variances
+    PD                 0.641      0.029     22.405      0.000
+
+ Residual Variances
+    K6NRV              0.628      0.022     28.933      0.000
+    K6RST              0.665      0.023     29.210      0.000
+    K6DEP              0.270      0.013     21.478      0.000
+    K6HOP              0.296      0.016     18.969      0.000
+    K6EFF              0.671      0.030     22.495      0.000
+    K6WTH              0.314      0.016     20.082      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.238E-01
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PD       BY
+    K6NRV              0.711      0.012     59.688      0.000
+    K6RST              0.717      0.011     64.058      0.000
+    K6DEP              0.867      0.007    118.842      0.000
+    K6HOP              0.859      0.008    105.844      0.000
+    K6EFF              0.762      0.011     68.549      0.000
+    K6WTH              0.871      0.007    119.897      0.000
+
+ Intercepts
+    K6NRV              2.099      0.022     95.360      0.000
+    K6RST              1.824      0.017    106.505      0.000
+    K6DEP              1.681      0.016    103.115      0.000
+    K6HOP              1.666      0.016    104.856      0.000
+    K6EFF              1.736      0.015    113.324      0.000
+    K6WTH              1.650      0.015    111.346      0.000
+
+ Variances
+    PD                 1.000      0.000    999.000    999.000
+
+ Residual Variances
+    K6NRV              0.495      0.017     29.244      0.000
+    K6RST              0.487      0.016     30.354      0.000
+    K6DEP              0.249      0.013     19.685      0.000
+    K6HOP              0.262      0.014     18.812      0.000
+    K6EFF              0.419      0.017     24.681      0.000
+    K6WTH              0.242      0.013     19.127      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    K6NRV              0.505      0.017     29.844      0.000
+    K6RST              0.513      0.016     32.029      0.000
+    K6DEP              0.751      0.013     59.421      0.000
+    K6HOP              0.738      0.014     52.922      0.000
+    K6EFF              0.581      0.017     34.275      0.000
+    K6WTH              0.758      0.013     59.948      0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    w:\projects\isem\isem-chp6-mplus\isem-chp6-m1-mlr.dgm
+
+     Beginning Time:  17:35:15
+        Ending Time:  17:35:17
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

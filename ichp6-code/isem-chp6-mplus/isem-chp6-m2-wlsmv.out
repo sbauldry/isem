@@ -1,0 +1,287 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+03/17/2025   5:37 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: psychological distress;
+  DATA: FILE = isem-nsduh-mplus-data.csv;
+  VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+    USEVAR = k6nrv k6hop k6rst k6dep k6eff k6wth;
+    CATEGORICAL = k6nrv k6hop k6rst k6dep k6eff k6wth;
+  ANALYSIS: ESTIMATOR = WLSMV;
+  MODEL:
+    Anx BY k6nrv k6rst;
+    Dep BY k6dep k6hop k6eff k6wth;
+  OUTPUT: STDYX;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+psychological distress;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3321
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   K6NRV       K6HOP       K6RST       K6DEP       K6EFF       K6WTH
+
+Continuous latent variables
+   ANX         DEP
+
+
+Estimator                                                    WLSMV
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Parameterization                                             DELTA
+Link                                                        PROBIT
+
+Input data file(s)
+  isem-nsduh-mplus-data.csv
+
+Input data format  FREE
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    K6NRV
+      Category 1    0.268          891.000
+      Category 2    0.302         1002.000
+      Category 3    0.273          908.000
+      Category 4    0.110          364.000
+      Category 5    0.047          156.000
+    K6HOP
+      Category 1    0.564         1872.000
+      Category 2    0.215          714.000
+      Category 3    0.137          456.000
+      Category 4    0.055          183.000
+      Category 5    0.029           96.000
+    K6RST
+      Category 1    0.400         1327.000
+      Category 2    0.250          829.000
+      Category 3    0.213          709.000
+      Category 4    0.093          308.000
+      Category 5    0.045          148.000
+    K6DEP
+      Category 1    0.568         1886.000
+      Category 2    0.215          715.000
+      Category 3    0.139          461.000
+      Category 4    0.052          173.000
+      Category 5    0.026           86.000
+    K6EFF
+      Category 1    0.406         1348.000
+      Category 2    0.236          784.000
+      Category 3    0.183          608.000
+      Category 4    0.104          347.000
+      Category 5    0.070          234.000
+    K6WTH
+      Category 1    0.524         1740.000
+      Category 2    0.223          739.000
+      Category 3    0.145          482.000
+      Category 4    0.066          220.000
+      Category 5    0.042          140.000
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       31
+
+Chi-Square Test of Model Fit
+
+          Value                            109.385*
+          Degrees of Freedom                     8
+          P-Value                           0.0000
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.062
+          90 Percent C.I.                    0.052  0.072
+          Probability RMSEA <= .05           0.027
+
+CFI/TLI
+
+          CFI                                0.998
+          TLI                                0.996
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                          50114.220
+          Degrees of Freedom                    15
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.009
+
+Optimum Function Value for Weighted Least-Squares Estimator
+
+          Value                     0.48636565D-02
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ANX      BY
+    K6NRV              1.000      0.000    999.000    999.000
+    K6RST              0.999      0.012     82.894      0.000
+
+ DEP      BY
+    K6DEP              1.000      0.000    999.000    999.000
+    K6HOP              0.993      0.006    170.028      0.000
+    K6EFF              0.904      0.008    116.684      0.000
+    K6WTH              0.998      0.005    182.044      0.000
+
+ DEP      WITH
+    ANX                0.700      0.009     75.676      0.000
+
+ Thresholds
+    K6NRV$1           -0.618      0.023    -26.492      0.000
+    K6NRV$2            0.176      0.022      8.065      0.000
+    K6NRV$3            1.009      0.026     38.369      0.000
+    K6NRV$4            1.675      0.037     44.759      0.000
+    K6HOP$1            0.160      0.022      7.337      0.000
+    K6HOP$2            0.768      0.024     31.665      0.000
+    K6HOP$3            1.379      0.031     44.175      0.000
+    K6HOP$4            1.897      0.044     43.052      0.000
+    K6RST$1           -0.254      0.022    -11.562      0.000
+    K6RST$2            0.383      0.022     17.153      0.000
+    K6RST$3            1.092      0.027     40.180      0.000
+    K6RST$4            1.700      0.038     44.652      0.000
+    K6DEP$1            0.171      0.022      7.822      0.000
+    K6DEP$2            0.783      0.024     32.153      0.000
+    K6DEP$3            1.419      0.032     44.462      0.000
+    K6DEP$4            1.945      0.046     42.478      0.000
+    K6EFF$1           -0.238      0.022    -10.836      0.000
+    K6EFF$2            0.364      0.022     16.327      0.000
+    K6EFF$3            0.935      0.026     36.544      0.000
+    K6EFF$4            1.472      0.033     44.741      0.000
+    K6WTH$1            0.060      0.022      2.759      0.006
+    K6WTH$2            0.663      0.024     28.134      0.000
+    K6WTH$3            1.235      0.029     42.599      0.000
+    K6WTH$4            1.726      0.039     44.516      0.000
+
+ Variances
+    ANX                0.715      0.013     55.835      0.000
+    DEP                0.840      0.008    104.424      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.314E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ANX      BY
+    K6NRV              0.846      0.008    111.671      0.000
+    K6RST              0.845      0.007    116.169      0.000
+
+ DEP      BY
+    K6DEP              0.916      0.004    208.849      0.000
+    K6HOP              0.910      0.005    190.613      0.000
+    K6EFF              0.829      0.007    117.269      0.000
+    K6WTH              0.915      0.004    213.753      0.000
+
+ DEP      WITH
+    ANX                0.904      0.006    142.674      0.000
+
+ Thresholds
+    K6NRV$1           -0.618      0.023    -26.492      0.000
+    K6NRV$2            0.176      0.022      8.065      0.000
+    K6NRV$3            1.009      0.026     38.369      0.000
+    K6NRV$4            1.675      0.037     44.759      0.000
+    K6HOP$1            0.160      0.022      7.337      0.000
+    K6HOP$2            0.768      0.024     31.665      0.000
+    K6HOP$3            1.379      0.031     44.175      0.000
+    K6HOP$4            1.897      0.044     43.052      0.000
+    K6RST$1           -0.254      0.022    -11.562      0.000
+    K6RST$2            0.383      0.022     17.153      0.000
+    K6RST$3            1.092      0.027     40.180      0.000
+    K6RST$4            1.700      0.038     44.652      0.000
+    K6DEP$1            0.171      0.022      7.822      0.000
+    K6DEP$2            0.783      0.024     32.153      0.000
+    K6DEP$3            1.419      0.032     44.462      0.000
+    K6DEP$4            1.945      0.046     42.478      0.000
+    K6EFF$1           -0.238      0.022    -10.836      0.000
+    K6EFF$2            0.364      0.022     16.327      0.000
+    K6EFF$3            0.935      0.026     36.544      0.000
+    K6EFF$4            1.472      0.033     44.741      0.000
+    K6WTH$1            0.060      0.022      2.759      0.006
+    K6WTH$2            0.663      0.024     28.134      0.000
+    K6WTH$3            1.235      0.029     42.599      0.000
+    K6WTH$4            1.726      0.039     44.516      0.000
+
+ Variances
+    ANX                1.000      0.000    999.000    999.000
+    DEP                1.000      0.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed   Residual
+    Variable        Estimate       S.E.  Est./S.E.    P-Value    Variance
+
+    K6NRV              0.715      0.013     55.835      0.000      0.285
+    K6HOP              0.828      0.009     95.307      0.000      0.172
+    K6RST              0.714      0.012     58.084      0.000      0.286
+    K6DEP              0.840      0.008    104.424      0.000      0.160
+    K6EFF              0.686      0.012     58.635      0.000      0.314
+    K6WTH              0.837      0.008    106.877      0.000      0.163
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    w:\projects\isem\isem-chp6-mplus\isem-chp6-m2-wlsmv.dgm
+
+     Beginning Time:  17:37:22
+        Ending Time:  17:37:24
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen
