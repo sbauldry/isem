@@ -1,6 +1,6 @@
-### Purpose: Prepare Chapter 1 example data
+### Purpose: Prepare Chapter 1 descriptives
 ### Author:  S Bauldry
-### Date:    Apr 17, 2025
+### Date:    Sep 18, 2025
 
 setwd("~/desktop")
 library(tidyverse)
