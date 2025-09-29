@@ -1,0 +1,354 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+09/29/2025  10:01 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: psychological distress;
+  DATA: FILE = isem-nsduh-mplus-data.csv;
+    LISTWISE = ON;
+  VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+    USEVAR = k6nrv k6rst k6dep k6hop k6eff k6wth;
+    CATEGORICAL = k6nrv k6rst k6dep k6hop k6eff k6wth;
+    MISSING = all(-9);
+  ANALYSIS: ESTIMATOR = MLR;
+    LINK = PROBIT;
+  MODEL:
+    Anx BY k6nrv k6rst;
+    Dep BY k6dep k6hop k6eff k6wth;
+  OUTPUT: STDYX;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+psychological distress;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3153
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   K6NRV       K6RST       K6DEP       K6HOP       K6EFF       K6WTH
+
+Continuous latent variables
+   ANX         DEP
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            10
+  Minimum value for logit thresholds                           -10
+  Minimum expected cell size for chi-square              0.100D-01
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            2
+  Adaptive quadrature                                           ON
+Link                                                        PROBIT
+Cholesky                                                        ON
+
+Input data file(s)
+  isem-nsduh-mplus-data.csv
+Input data format  FREE
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    K6NRV
+      Category 1    0.265          837.000
+      Category 2    0.304          960.000
+      Category 3    0.276          869.000
+      Category 4    0.108          340.000
+      Category 5    0.047          147.000
+    K6RST
+      Category 1    0.396         1250.000
+      Category 2    0.254          802.000
+      Category 3    0.214          674.000
+      Category 4    0.092          289.000
+      Category 5    0.044          138.000
+    K6DEP
+      Category 1    0.569         1794.000
+      Category 2    0.219          689.000
+      Category 3    0.137          431.000
+      Category 4    0.051          161.000
+      Category 5    0.025           78.000
+    K6HOP
+      Category 1    0.565         1781.000
+      Category 2    0.216          681.000
+      Category 3    0.137          431.000
+      Category 4    0.055          173.000
+      Category 5    0.028           87.000
+    K6EFF
+      Category 1    0.404         1274.000
+      Category 2    0.242          764.000
+      Category 3    0.181          572.000
+      Category 4    0.103          326.000
+      Category 5    0.069          217.000
+    K6WTH
+      Category 1    0.524         1652.000
+      Category 2    0.228          719.000
+      Category 3    0.141          445.000
+      Category 4    0.066          208.000
+      Category 5    0.041          129.000
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       31
+
+Loglikelihood
+
+          H0 Value                      -19354.301
+          H0 Scaling Correction Factor      1.1084
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   38770.601
+          Bayesian (BIC)                 38958.340
+          Sample-Size Adjusted BIC       38859.840
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit for the Binary and Ordered Categorical
+(Ordinal) Outcomes**
+
+          Pearson Chi-Square
+
+          Value                           9020.246
+          Degrees of Freedom                 15528
+          P-Value                           1.0000
+
+          Likelihood Ratio Chi-Square
+
+          Value                           3609.832
+          Degrees of Freedom                 15528
+          P-Value                           1.0000
+
+** Of the 15625 cells in the frequency table, 65
+   were deleted in the calculation of chi-square due to extreme values.
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ANX      BY
+    K6NRV              1.000      0.000    999.000    999.000
+    K6RST              0.996      0.056     17.643      0.000
+
+ DEP      BY
+    K6DEP              1.000      0.000    999.000    999.000
+    K6HOP              0.945      0.054     17.561      0.000
+    K6EFF              0.639      0.034     18.982      0.000
+    K6WTH              1.002      0.054     18.567      0.000
+
+ DEP      WITH
+    ANX                3.509      0.220     15.947      0.000
+
+ Thresholds
+    K6NRV$1           -1.159      0.054    -21.305      0.000
+    K6NRV$2            0.374      0.044      8.596      0.000
+    K6NRV$3            1.907      0.072     26.483      0.000
+    K6NRV$4            3.089      0.112     27.546      0.000
+    K6RST$1           -0.452      0.043    -10.432      0.000
+    K6RST$2            0.764      0.047     16.347      0.000
+    K6RST$3            2.050      0.071     28.724      0.000
+    K6RST$4            3.142      0.102     30.868      0.000
+    K6DEP$1            0.514      0.061      8.462      0.000
+    K6DEP$2            2.022      0.087     23.323      0.000
+    K6DEP$3            3.615      0.131     27.595      0.000
+    K6DEP$4            5.015      0.185     27.044      0.000
+    K6HOP$1            0.463      0.058      8.034      0.000
+    K6HOP$2            1.894      0.084     22.632      0.000
+    K6HOP$3            3.353      0.130     25.700      0.000
+    K6HOP$4            4.596      0.194     23.641      0.000
+    K6EFF$1           -0.400      0.041     -9.792      0.000
+    K6EFF$2            0.741      0.045     16.341      0.000
+    K6EFF$3            1.731      0.061     28.451      0.000
+    K6EFF$4            2.595      0.084     30.822      0.000
+    K6WTH$1            0.233      0.058      4.009      0.000
+    K6WTH$2            1.738      0.079     21.982      0.000
+    K6WTH$3            3.145      0.116     27.131      0.000
+    K6WTH$4            4.402      0.164     26.820      0.000
+
+ Variances
+    ANX                2.611      0.228     11.463      0.000
+    DEP                5.732      0.492     11.658      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.253E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ K6NRV
+    Category 1         0.271
+    Category 2         0.307
+    Category 3         0.264
+    Category 4         0.106
+    Category 5         0.052
+ K6RST
+    Category 1         0.406
+    Category 2         0.251
+    Category 3         0.204
+    Category 4         0.091
+    Category 5         0.049
+ K6DEP
+    Category 1         0.578
+    Category 2         0.204
+    Category 3         0.136
+    Category 4         0.055
+    Category 5         0.027
+ K6HOP
+    Category 1         0.574
+    Category 2         0.204
+    Category 3         0.134
+    Category 4         0.056
+    Category 5         0.032
+ K6EFF
+    Category 1         0.413
+    Category 2         0.244
+    Category 3         0.171
+    Category 4         0.094
+    Category 5         0.078
+ K6WTH
+    Category 1         0.536
+    Category 2         0.212
+    Category 3         0.139
+    Category 4         0.068
+    Category 5         0.045
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ANX      BY
+    K6NRV              0.850      0.010     82.773      0.000
+    K6RST              0.849      0.010     89.099      0.000
+
+ DEP      BY
+    K6DEP              0.923      0.006    156.956      0.000
+    K6HOP              0.915      0.007    137.979      0.000
+    K6EFF              0.837      0.009     91.778      0.000
+    K6WTH              0.923      0.006    159.561      0.000
+
+ DEP      WITH
+    ANX                0.907      0.009    103.775      0.000
+
+ Thresholds
+    K6NRV$1           -0.610      0.025    -24.773      0.000
+    K6NRV$2            0.197      0.022      8.983      0.000
+    K6NRV$3            1.004      0.026     38.641      0.000
+    K6NRV$4            1.625      0.037     43.732      0.000
+    K6RST$1           -0.238      0.023    -10.484      0.000
+    K6RST$2            0.403      0.022     18.202      0.000
+    K6RST$3            1.082      0.027     40.191      0.000
+    K6RST$4            1.659      0.038     43.948      0.000
+    K6DEP$1            0.198      0.022      9.095      0.000
+    K6DEP$2            0.779      0.024     32.526      0.000
+    K6DEP$3            1.393      0.032     43.665      0.000
+    K6DEP$4            1.933      0.046     41.809      0.000
+    K6HOP$1            0.187      0.022      8.610      0.000
+    K6HOP$2            0.766      0.024     32.240      0.000
+    K6HOP$3            1.355      0.031     43.968      0.000
+    K6HOP$4            1.858      0.045     41.435      0.000
+    K6EFF$1           -0.219      0.023     -9.610      0.000
+    K6EFF$2            0.405      0.022     18.345      0.000
+    K6EFF$3            0.947      0.025     38.119      0.000
+    K6EFF$4            1.420      0.032     44.676      0.000
+    K6WTH$1            0.090      0.022      4.107      0.000
+    K6WTH$2            0.669      0.023     28.952      0.000
+    K6WTH$3            1.210      0.029     42.042      0.000
+    K6WTH$4            1.694      0.039     43.678      0.000
+
+ Variances
+    ANX                1.000      0.000    999.000    999.000
+    DEP                1.000      0.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    K6NRV              0.723      0.017     41.386      0.000
+    K6RST              0.721      0.016     44.549      0.000
+    K6DEP              0.851      0.011     78.478      0.000
+    K6HOP              0.837      0.012     68.990      0.000
+    K6EFF              0.700      0.015     45.889      0.000
+    K6WTH              0.852      0.011     79.781      0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    w:\projects\isem\isem-chp6-mplus\isem-chp6-m2-mlp.dgm
+
+     Beginning Time:  10:01:33
+        Ending Time:  10:01:47
+       Elapsed Time:  00:00:14
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

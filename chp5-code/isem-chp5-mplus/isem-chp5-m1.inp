@@ -1,0 +1,14 @@
+TITLE: estimate indirect effect in full model;
+DATA: FILE = isem-nsduh-mplus-data.csv;
+  LISTWISE = ON;
+VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+  USEVAR = mar fem blk hsp drk k6nrv k6rst k6dep k6hop k6eff k6wth;
+  MISSING = all(-9);
+ANALYSIS: ESTIMATOR = ML;
+MODEL:
+  PD BY k6nrv k6rst k6dep k6hop k6eff k6wth;
+  PD ON fem blk hsp mar;
+  drk ON PD fem blk hsp mar;
+MODEL INDIRECT:
+  drk IND PD mar;
+OUTPUT: STDYX;

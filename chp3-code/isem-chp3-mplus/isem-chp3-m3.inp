@@ -1,8 +1,12 @@
-TITLE: psychological distress;
+TITLE: full model with robust estimator;
 DATA: FILE = isem-nsduh-mplus-data.csv;
+  LISTWISE = ON;
 VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
-  USEVAR = k6nrv k6rst k6dep k6hop k6eff k6wth;
+  USEVAR = mar fem blk hsp drk k6nrv k6rst k6dep k6hop k6eff k6wth;
+  MISSING = all(-9);
 ANALYSIS: ESTIMATOR = MLR;
 MODEL:
   PD BY k6nrv k6rst k6dep k6hop k6eff k6wth;
+  PD ON fem blk hsp mar;
+  drk ON PD fem blk hsp mar;
 OUTPUT: STDYX;

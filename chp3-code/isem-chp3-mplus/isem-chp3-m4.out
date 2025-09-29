@@ -1,0 +1,349 @@
+Mplus VERSION 8.6
+MUTHEN & MUTHEN
+09/29/2025   9:43 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: full model with FIML estimator;
+  DATA: FILE = isem-nsduh-mplus-data.csv;
+  VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+    USEVAR = mar fem blk hsp drk k6nrv k6rst k6dep k6hop k6eff k6wth;
+    MISSING = all(-9);
+  ANALYSIS: ESTIMATOR = MLR;
+  MODEL:
+    PD BY k6nrv k6rst k6dep k6hop k6eff k6wth;
+    PD ON fem blk hsp mar;
+    drk ON PD fem blk hsp mar;
+  OUTPUT: STDYX;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+full model with FIML estimator;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3247
+
+Number of dependent variables                                    7
+Number of independent variables                                  4
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   DRK         K6NRV       K6RST       K6DEP       K6HOP       K6EFF
+   K6WTH
+
+Observed independent variables
+   MAR         FEM         BLK         HSP
+
+Continuous latent variables
+   PD
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  isem-nsduh-mplus-data.csv
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns            12
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              DRK           K6NRV         K6RST         K6DEP         K6HOP
+              ________      ________      ________      ________      ________
+ DRK            1.000
+ K6NRV          0.975         0.975
+ K6RST          0.975         0.974         0.975
+ K6DEP          0.975         0.974         0.974         0.975
+ K6HOP          0.975         0.975         0.974         0.974         0.975
+ K6EFF          0.974         0.973         0.972         0.973         0.973
+ K6WTH          0.975         0.974         0.974         0.974         0.974
+ MAR            1.000         0.975         0.975         0.975         0.975
+ FEM            1.000         0.975         0.975         0.975         0.975
+ BLK            1.000         0.975         0.975         0.975         0.975
+ HSP            1.000         0.975         0.975         0.975         0.975
+
+
+           Covariance Coverage
+              K6EFF         K6WTH         MAR           FEM           BLK
+              ________      ________      ________      ________      ________
+ K6EFF          0.974
+ K6WTH          0.973         0.975
+ MAR            0.974         0.975         1.000
+ FEM            0.974         0.975         1.000         1.000
+ BLK            0.974         0.975         1.000         1.000         1.000
+ HSP            0.974         0.975         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              HSP
+              ________
+ HSP            1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     DRK                   4.233       2.037       0.000   41.21%       0.000      0.000      2.000
+            3247.000      41.106       3.851      30.000    0.86%       3.000      8.000
+     K6NRV                 2.365       0.498       1.000   26.56%       1.000      2.000      2.000
+            3166.000       1.258      -0.482       5.000    4.64%       3.000      3.000
+     K6RST                 2.130       0.761       1.000   39.75%       1.000      2.000      2.000
+            3165.000       1.355      -0.349       5.000    4.39%       2.000      3.000
+     K6DEP                 1.743       1.345       1.000   56.95%       1.000      1.000      1.000
+            3166.000       1.066       1.062       5.000    2.46%       2.000      3.000
+     K6HOP                 1.763       1.327       1.000   56.54%       1.000      1.000      1.000
+            3166.000       1.111       0.965       5.000    2.75%       2.000      3.000
+     K6EFF                 2.189       0.781       1.000   40.49%       1.000      1.000      2.000
+            3161.000       1.584      -0.487       5.000    6.90%       2.000      3.000
+     K6WTH                 1.870       1.207       1.000   52.50%       1.000      1.000      1.000
+            3166.000       1.278       0.547       5.000    4.07%       2.000      3.000
+     MAR                   0.356       0.601       0.000   64.40%       0.000      0.000      0.000
+            3247.000       0.229      -1.638       1.000   35.60%       0.000      1.000
+     FEM                   0.556      -0.224       0.000   44.44%       0.000      0.000      1.000
+            3247.000       0.247      -1.950       1.000   55.56%       1.000      1.000
+     BLK                   0.124       2.276       0.000   87.56%       0.000      0.000      0.000
+            3247.000       0.109       3.179       1.000   12.44%       0.000      0.000
+     HSP                   0.263       1.075       0.000   73.67%       0.000      0.000      0.000
+            3247.000       0.194      -0.845       1.000   26.33%       0.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       29
+
+Loglikelihood
+
+          H0 Value                      -33692.773
+          H0 Scaling Correction Factor      1.3210
+            for MLR
+          H1 Value                      -33361.524
+          H1 Scaling Correction Factor      1.2715
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   67443.545
+          Bayesian (BIC)                 67620.024
+          Sample-Size Adjusted BIC       67527.879
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            538.920*
+          Degrees of Freedom                    34
+          P-Value                           0.0000
+          Scaling Correction Factor         1.2293
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.068
+          90 Percent C.I.                    0.063  0.073
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.949
+          TLI                                0.926
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           9947.997
+          Degrees of Freedom                    49
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.030
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PD       BY
+    K6NRV              1.000      0.000    999.000    999.000
+    K6RST              1.039      0.023     44.265      0.000
+    K6DEP              1.120      0.030     37.254      0.000
+    K6HOP              1.135      0.027     41.509      0.000
+    K6EFF              1.207      0.030     40.118      0.000
+    K6WTH              1.237      0.031     39.582      0.000
+
+ PD       ON
+    FEM                0.110      0.029      3.774      0.000
+    BLK               -0.178      0.049     -3.625      0.000
+    HSP               -0.186      0.034     -5.451      0.000
+    MAR               -0.321      0.028    -11.288      0.000
+
+ DRK      ON
+    PD                 0.521      0.171      3.048      0.002
+
+ DRK      ON
+    FEM               -1.604      0.230     -6.963      0.000
+    BLK               -1.494      0.322     -4.641      0.000
+    HSP               -1.498      0.247     -6.068      0.000
+    MAR               -0.928      0.231     -4.011      0.000
+
+ Intercepts
+    DRK                6.099      0.231     26.386      0.000
+    K6NRV              2.489      0.030     82.350      0.000
+    K6RST              2.260      0.031     71.879      0.000
+    K6DEP              1.883      0.032     58.540      0.000
+    K6HOP              1.904      0.033     57.940      0.000
+    K6EFF              2.339      0.036     65.756      0.000
+    K6WTH              2.024      0.036     56.480      0.000
+
+ Residual Variances
+    DRK               39.487      1.644     24.016      0.000
+    K6NRV              0.626      0.022     28.325      0.000
+    K6RST              0.672      0.024     28.551      0.000
+    K6DEP              0.273      0.013     21.174      0.000
+    K6HOP              0.298      0.016     18.461      0.000
+    K6EFF              0.663      0.030     21.844      0.000
+    K6WTH              0.311      0.016     19.547      0.000
+    PD                 0.602      0.027     21.889      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.548E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ PD       BY
+    K6NRV              0.709      0.012     58.263      0.000
+    K6RST              0.710      0.012     60.542      0.000
+    K6DEP              0.862      0.008    111.816      0.000
+    K6HOP              0.856      0.009    100.569      0.000
+    K6EFF              0.762      0.011     66.643      0.000
+    K6WTH              0.870      0.008    115.703      0.000
+
+ PD       ON
+    FEM                0.069      0.018      3.805      0.000
+    BLK               -0.074      0.020     -3.643      0.000
+    HSP               -0.103      0.019     -5.535      0.000
+    MAR               -0.193      0.016    -11.772      0.000
+
+ DRK      ON
+    PD                 0.065      0.021      3.089      0.002
+
+ DRK      ON
+    FEM               -0.124      0.017     -7.186      0.000
+    BLK               -0.077      0.016     -4.663      0.000
+    HSP               -0.103      0.017     -6.112      0.000
+    MAR               -0.069      0.017     -4.024      0.000
+
+ Intercepts
+    DRK                0.951      0.027     35.070      0.000
+    K6NRV              2.220      0.030     74.762      0.000
+    K6RST              1.942      0.026     75.798      0.000
+    K6DEP              1.824      0.030     61.724      0.000
+    K6HOP              1.807      0.029     62.565      0.000
+    K6EFF              1.859      0.026     70.631      0.000
+    K6WTH              1.790      0.028     63.268      0.000
+
+ Residual Variances
+    DRK                0.961      0.006    151.424      0.000
+    K6NRV              0.498      0.017     28.870      0.000
+    K6RST              0.496      0.017     29.837      0.000
+    K6DEP              0.257      0.013     19.296      0.000
+    K6HOP              0.268      0.015     18.414      0.000
+    K6EFF              0.419      0.017     24.041      0.000
+    K6WTH              0.244      0.013     18.644      0.000
+    PD                 0.953      0.007    134.109      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    DRK                0.039      0.006      6.212      0.000
+    K6NRV              0.502      0.017     29.131      0.000
+    K6RST              0.504      0.017     30.271      0.000
+    K6DEP              0.743      0.013     55.908      0.000
+    K6HOP              0.732      0.015     50.284      0.000
+    K6EFF              0.581      0.017     33.322      0.000
+    K6WTH              0.756      0.013     57.851      0.000
+
+     Latent                                         Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    PD                 0.047      0.007      6.659      0.000
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    w:\projects\isem\isem-chp3-mplus\isem-chp3-m4.dgm
+
+     Beginning Time:  09:43:08
+        Ending Time:  09:43:13
+       Elapsed Time:  00:00:05
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

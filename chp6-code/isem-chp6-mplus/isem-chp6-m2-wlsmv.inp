@@ -1,0 +1,12 @@
+TITLE: psychological distress;
+DATA: FILE = isem-nsduh-mplus-data.csv;
+  LISTWISE = ON;
+VARIABLE: NAMES = mar fem blk hsp drk k6nrv k6hop k6rst k6dep k6eff k6wth;
+  USEVAR = k6nrv k6hop k6rst k6dep k6eff k6wth;
+  CATEGORICAL = k6nrv k6hop k6rst k6dep k6eff k6wth;
+  MISSING = all(-9);
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  Anx BY k6nrv k6rst;
+  Dep BY k6dep k6hop k6eff k6wth;
+OUTPUT: STDYX;
