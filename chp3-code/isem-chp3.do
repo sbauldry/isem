@@ -4,7 +4,7 @@
 
 *** Load prepared NSDUH data
 cd ~/desktop
-import delimited isem-chp3-data.csv, delim(",")
+import delimited isem-nsduh-data.csv, delim(",")
 
 
 *** Table 3.1

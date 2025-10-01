@@ -74,18 +74,9 @@ summary(fit4, rsquare = T)
 
 ### Table 3.3 -- miiv estimators
 m3 <- '
-  PD =~ k6nrv + k6rst + k6dep
+  PD =~ k6nrv + k6rst + k6dep + k6hop + k6eff + k6wth
+  PD  ~ mar + fem + blk + hsp 
+  drk ~ PD + mar + fem + blk + hsp 
 '
-fit5 <- sem(m3, data = d2)
-summary(fit5)
-
 miivs(m3)
 miive(m3, d2)
-
-m4 <- '
-  PD =~ k6nrv + k6rst + k6dep + k6hop + k6eff + k6wth
-  PD  ~ a*mar + blk + hsp 
-  drk ~ b*PD + mar + fem + blk + hsp 
-'
-miivs(m4)
-miive(m4, d2)

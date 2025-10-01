@@ -250,7 +250,7 @@ grid$B <- grid$gamma*grid$delta
 
 f58 <- ggplot(grid, aes(x = gamma, y = delta, z = B)) +
   geom_contour_filled(breaks = seq(0, 0.3, by = 0.03), alpha = 0.8) +
-  geom_contour(breaks = c(0.08), color = "darkred", linetype = "dashed", linewidth = 1) +
+  geom_contour(breaks = c(0.07), color = "darkred", linetype = "dashed", linewidth = 1) +
   geom_contour(breaks = c(0.17), color = "darkblue", linetype = "dashed", linewidth = 1) +
   theme_light() +
   theme(
