@@ -6,6 +6,10 @@
 import delimited ~/desktop/isem-nsduh-data.csv, delim(",")
 
 
+*** user written command for polychoric correlations
+polychoric k6nrv k6hop k6rst k6dep k6eff k6wth
+cor k6nrv k6hop k6rst k6dep k6eff k6wth
+
 *** fit measurement model
 gsem (PD -> k6nrv k6hop k6rst k6dep k6eff k6wth, ologit)
 

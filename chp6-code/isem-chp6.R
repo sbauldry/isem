@@ -62,9 +62,57 @@ polychoric(d3)
 cor(d3)
 
 
-### Calculating predicted probabilities
-tau <- c(-0.62, 0.18, 1.01, 1.68)
-pnorm( -tau )
+### Table 6.2 - measurement models model fit
+m1 <- '
+  PD =~ k6nrv + k6rst + k6dep + k6hop + k6eff + k6wth
+'
+fit1 <- sem(m1, data = d1, estimator = "MLR", meanstructure = T)
+fit2 <- sem(m1, data = d1, ordered = c("k6nrv", "k6rst", "k6dep", "k6hop", "k6eff", "k6wth"))
+
+m2 <- '
+  Anx =~ k6nrv + k6rst 
+  Dep =~ k6dep + k6hop + k6eff + k6wth
+'
+fit3 <- sem(m2, data = d1, estimator = "MLR", meanstructure = T)
+fit4 <- sem(m2, data = d1, ordered = c("k6nrv", "k6rst", "k6dep", "k6hop", "k6eff", "k6wth"))
+
+fitMeasures(fit1, c("chisq.scaled", "df.scaled", "pvalue.scaled", "rmsea.scaled", "cfi.scaled", "tli.scaled"))
+fitMeasures(fit2, c("chisq.scaled", "df.scaled", "pvalue.scaled", "rmsea.scaled", "cfi.scaled", "tli.scaled"))
+fitMeasures(fit3, c("chisq.scaled", "df.scaled", "pvalue.scaled", "rmsea.scaled", "cfi.scaled", "tli.scaled"))
+fitMeasures(fit4, c("chisq.scaled", "df.scaled", "pvalue.scaled", "rmsea.scaled", "cfi.scaled", "tli.scaled"))
+
+
+### Table 6.3 - measurement models parameter estimates
+summary(fit1)
+summary(fit2)
+summary(fit3)
+standardizedSolution(fit3)
+summary(fit4)
+standardizedSolution(fit4)
+
+
+### Storing estimates for predicted probabilities and AMEs
+all_tau <- lavInspect(fit2, what = "est")$tau
+nrv_tau <- all_tau[1:4]
+rst_tau <- all_tau[5:8]
+dep_tau <- all_tau[9:12]
+hop_tau <- all_tau[13:16]
+eff_tau <- all_tau[17:20]
+wth_tau <- all_tau[21:24]
+
+all_lambda <- lavInspect(fit2, what = "est")$lambda
+nrv_lambda <- all_lambda[1]
+rst_lambda <- all_lambda[2]
+dep_lambda <- all_lambda[3]
+hop_lambda <- all_lambda[4]
+eff_lambda <- all_lambda[5]
+wth_lambda <- all_lambda[6]
+
+PD_sd <- sqrt( lavInspect(fit2, what = "est")$psi )
+
+
+### Calculating predicted probabilities for nervous indicator
+pnorm( -nrv_tau )
 
 
 ### Figure 6.4 - predicted responses for nervous and depressed
@@ -89,7 +137,8 @@ prfig <- function(t1, t2, t3, t4, l1) {
   return(f)
 }
 
-f64a <- prfig(-0.62, 0.18, 1.01, 1.68, 1) +
+
+f64a <- prfig(nrv_tau[1], nrv_tau[2], nrv_tau[3], nrv_tau[4], nrv_lambda) +
   annotate("text", x = -1.5, y = 0.75, label = "N", size = 5) +
   annotate("text", x = -1.5, y = 0.20, label = "L", size = 5) +
   annotate("text", x =  0.5, y = 0.35, label = "S", size = 5) +
@@ -97,7 +146,7 @@ f64a <- prfig(-0.62, 0.18, 1.01, 1.68, 1) +
   annotate("text", x =  2.0, y = 0.55, label = "A", size = 5) +
   ggtitle("Panel A: Nervous")
 
-f64b <- prfig(0.17, 0.78, 1.42, 1.95, 1.15) +
+f64b <- prfig(dep_tau[1], dep_tau[2], dep_tau[3], dep_tau[4], dep_lambda) +
   annotate("text", x = -1.5, y = 0.93, label = "N", size = 5) +
   annotate("text", x = -1.5, y = 0.07, label = "L", size = 5) +
   annotate("text", x =  0.5, y = 0.27, label = "S", size = 5) +
@@ -126,12 +175,12 @@ me <- function(t1, t2, t3, t4, l1, a, b) {
   return(me)
 }
 
-menrv <- me(-0.62, 0.18, 1.01, 1.68, 1.00, -0.4, 0.4)
-merst <- me(-0.25, 0.38, 1.09, 1.70, 1.00, -0.4, 0.4)
-medep <- me( 0.17, 0.78, 1.42, 1.95, 1.15, -0.4, 0.4)
-mehop <- me( 0.16, 0.77, 1.38, 1.90, 1.14, -0.4, 0.4)
-meeff <- me(-0.24, 0.36, 0.94, 1.47, 1.03, -0.4, 0.4)
-mewth <- me( 0.06, 0.66, 1.24, 1.73, 1.15, -0.4, 0.4)
+menrv <- me(nrv_tau[1], nrv_tau[2], nrv_tau[3], nrv_tau[4], nrv_lambda, -PD_sd/2, PD_sd/2)
+merst <- me(rst_tau[1], rst_tau[2], rst_tau[3], rst_tau[4], rst_lambda, -PD_sd/2, PD_sd/2)
+medep <- me(dep_tau[1], dep_tau[2], dep_tau[3], dep_tau[4], dep_lambda, -PD_sd/2, PD_sd/2)
+mehop <- me(hop_tau[1], hop_tau[2], hop_tau[3], hop_tau[4], hop_lambda, -PD_sd/2, PD_sd/2)
+meeff <- me(eff_tau[1], eff_tau[2], eff_tau[3], eff_tau[4], eff_lambda, -PD_sd/2, PD_sd/2)
+mewth <- me(wth_tau[1], wth_tau[2], wth_tau[3], wth_tau[4], wth_lambda, -PD_sd/2, PD_sd/2)
 
 me <- rbind(menrv, merst, medep, mehop, meeff, mewth)
 round(me, 2)
