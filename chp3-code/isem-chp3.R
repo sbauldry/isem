@@ -7,7 +7,10 @@ library(tidyverse)
 library(lavaan)
 library(MIIVsem)
 library(ggpubr)
+library(extrafont)
 
+font_import()
+loadfonts()
 
 ### Load prepared NSDUH data
 d1 <- read_csv("isem-nsduh-data.csv")
@@ -25,10 +28,11 @@ genfig <- function(var, vlab) {
     geom_bar(aes(y = after_stat(prop), group = 1)) +
     scale_x_discrete(name = vlab) +
     scale_y_continuous(name = "proportion", limits = c(0, 0.6)) +
-    theme_light() +
+    theme_minimal() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 20)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   return(f)
 }
@@ -41,6 +45,7 @@ f34e <- genfig("k6eff", "effort")
 f34f <- genfig("k6wth", "worthless")
 
 f34 <- ggarrange(f34a, f34b, f34c, f34d, f34e, f34f)
+f34
 ggsave("isem-f34.pdf", f34)
 
 

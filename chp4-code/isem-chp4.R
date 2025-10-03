@@ -12,7 +12,6 @@ library(ggpubr)
 d1 <- read_csv("isem-nsduh-data.csv")
 
 
-
 ### Table 4.1
 m1 <- '
   PD =~ k6nrv + k6rst + k6dep + k6hop + k6eff + k6wth
@@ -28,12 +27,10 @@ fit2 <- sem(m2, data = d1)
 fitMeasures(fit2, c("chisq", "df", "pvalue", "srmr", "rmsea", "cfi", "tli"))
 
 
-
 ### Table 4.2
 summary(fit1, rsquare = T)
 summary(fit2, rsquare = T)
 standardizedSolution(fit2)
-
 
 
 ### Table 4.3
@@ -73,7 +70,6 @@ anova(fit2r, fit2u)
 
 fitMeasures(fit1, c("aic", "bic"))
 fitMeasures(fit2, c("chisq", "aic", "bic"))
-
 
 
 ### Table 4.4

@@ -6,6 +6,10 @@ setwd("~/desktop")
 library(tidyverse)
 library(lavaan)
 library(ggpubr)
+library(extrafont)
+
+font_import()
+loadfonts()
 
 
 ### General simulation parameters
@@ -46,12 +50,11 @@ simfig <- function(d, eie, tie, epm, tpm, ielb, ieub, pmlb, pmub) {
     geom_vline(xintercept = tie, linetype = "dashed") +
     scale_x_continuous(name = "indirect effect", limits = c(ielb, ieub), breaks = seq(ielb, ieub, 0.5)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tie, y = max(density(d$ie)$y)*0.8, label = "true value", hjust = -0.1, size = 6) +
-    annotate("text", x = eie, y = max(density(d$ie)$y)*0.6, label = "mean value", hjust = 1.1, size = 6) +
-    theme_light() +
+    theme_minimal() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   fb <- ggplot(d, aes(x = pm)) +
@@ -60,19 +63,18 @@ simfig <- function(d, eie, tie, epm, tpm, ielb, ieub, pmlb, pmub) {
     geom_vline(xintercept = tpm, linetype = "dashed") +
     scale_x_continuous(name = "proportion mediated", limits = c(pmlb, pmub)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tpm, y = max(density(d$pm)$y)*0.8, label = "true value", hjust = -0.1, size = 6) +
-    annotate("text", x = epm, y = max(density(d$pm)$y)*0.6, label = "mean value", hjust = 1.1, size = 6) +
-    theme_light() +
+    theme_minimal() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   f <- ggarrange(fa, fb)
   return(f)
 }
 
-f54 <- simfig(sim1, mean(sim1$ie), 1, mean(sim1$pm), 0.5, 1.0, 2.3, 0.5, 1.0)
+f54 <- simfig(sim1, mean(sim1$ie), 1, mean(sim1$pm), 0.5, 0.5, 2.5, 0.4, 1.0)
 ggsave("isem-f54.pdf", f54)
 
 
@@ -99,7 +101,7 @@ for(i in 1:M) {
   sim2$pm[i] <- ests[ests$label == "pm", "est"]
 }
 
-f55 <- simfig(sim2, mean(sim2$ie), 1, mean(sim2$pm), 0.5, 1.0, 2.3, 0.5, 1.0)
+f55 <- simfig(sim2, mean(sim2$ie), 1, mean(sim2$pm), 0.5, 0.5, 2.5, 0.4, 1.0)
 ggsave("isem-f55.pdf", f55)
 
 
@@ -128,7 +130,7 @@ for(i in 1:M) {
 }
 summary(sim3)
 
-f56 <- simfig(sim3, mean(sim3$ie), 1, mean(sim3$pm), 0.33, 1.0, 2.3, 0.25, 0.6)
+f56 <- simfig(sim3, mean(sim3$ie), 1, mean(sim3$pm), 0.33, 0.5, 2.5, 0.25, 0.6)
 ggsave("isem-f56.pdf", f56)
 
 
@@ -168,12 +170,11 @@ simfig2 <- function(d, eie1, tie1, epm1, tpm1, eie2, tie2, epm2, tpm2) {
     geom_vline(xintercept = tie1, linetype = "dashed") +
     scale_x_continuous(name = "indirect effect", limits = c(0.7, 2.3)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tie1, y = max(density(d$ie1)$y)*0.8, label = "true value", hjust = 1.1, size = 4) +
-    annotate("text", x = eie1, y = max(density(d$ie1)$y)*0.6, label = "mean value", hjust = -0.1, size = 4) +
     theme_light() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   fb <- ggplot(d, aes(x = pm1)) +
@@ -182,12 +183,11 @@ simfig2 <- function(d, eie1, tie1, epm1, tpm1, eie2, tie2, epm2, tpm2) {
     geom_vline(xintercept = tpm1, linetype = "dashed") +
     scale_x_continuous(name = "proportion mediated", limits = c(0.2, 0.6)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tpm1, y = max(density(d$pm1)$y)*0.8, label = "true value", hjust = 1.1, size = 4) +
-    annotate("text", x = epm1, y = max(density(d$pm1)$y)*0.6, label = "mean value", hjust = -0.1, size = 4) +
     theme_light() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   fc <- ggplot(d, aes(x = ie2)) +
@@ -196,12 +196,11 @@ simfig2 <- function(d, eie1, tie1, epm1, tpm1, eie2, tie2, epm2, tpm2) {
     geom_vline(xintercept = tie2, linetype = "dashed") +
     scale_x_continuous(name = "indirect effect", limits = c(0.7, 2.3)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tie2, y = max(density(d$ie2)$y)*0.8, label = "true value", hjust = -0.1, size = 4) +
-    annotate("text", x = eie2, y = max(density(d$ie2)$y)*0.6, label = "mean value", hjust = 1.1, size = 4) +
     theme_light() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   fd <- ggplot(d, aes(x = pm2)) +
@@ -210,12 +209,11 @@ simfig2 <- function(d, eie1, tie1, epm1, tpm1, eie2, tie2, epm2, tpm2) {
     geom_vline(xintercept = tpm2, linetype = "dashed") +
     scale_x_continuous(name = "proportion mediated", limits = c(0.2, 0.6)) +
     scale_y_continuous(name = "density") +
-    annotate("text", x = tpm2, y = max(density(d$pm2)$y)*0.8, label = "true value", hjust = -0.1, size = 4) +
-    annotate("text", x = epm2, y = max(density(d$pm2)$y)*0.6, label = "mean value", hjust = 1.1, size = 4) +
     theme_light() +
     theme(
-      axis.text  = element_text(size = 16),
-      axis.title = element_text(size = 18)
+      axis.text  = element_text(size = 12, family = "Times New Roman"),
+      axis.title = element_text(size = 14, family = "Times New Roman"),
+      text = element_text(family = "Times New Roman")
     )
   
   f <- ggarrange(fa, fb, fc, fd)
@@ -250,14 +248,16 @@ grid$B <- grid$gamma*grid$delta
 
 f58 <- ggplot(grid, aes(x = gamma, y = delta, z = B)) +
   geom_contour_filled(breaks = seq(0, 0.3, by = 0.03), alpha = 0.8) +
-  geom_contour(breaks = c(0.07), color = "darkred", linetype = "dashed", linewidth = 1) +
-  geom_contour(breaks = c(0.17), color = "darkblue", linetype = "dashed", linewidth = 1) +
-  theme_light() +
+  geom_contour(breaks = c(0.07), color = "black", linetype = "dashed", linewidth = 1) +
+  geom_contour(breaks = c(0.17), color = "black", linetype = "dotted", linewidth = 1) +
+  scale_fill_grey(start = 0.2, end = 0.9) +
+  theme_minimal() +
   theme(
-    axis.title = element_text(size = 16),     
-    axis.text = element_text(size = 18),      
-    legend.title = element_text(size = 18),   
-    legend.text = element_text(size = 16)     
+    axis.text  = element_text(size = 18, family = "Times New Roman"),
+    axis.title = element_text(size = 20, family = "Times New Roman"),
+    legend.title = element_text(size = 20, family = "Times New Roman"),   
+    legend.text = element_text(size = 18, family = "Times New Roman"),
+    text = element_text(family = "Times New Roman")     
   )
 f58
 ggsave("isem-f58.pdf", f58, width = 10, height = 9)
